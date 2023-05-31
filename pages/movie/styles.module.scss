@@ -1,0 +1,158 @@
+.movieDetailArea {
+    background-image: url("/movie_details_bg.jpg");
+    background-size: cover;
+    padding: 100px 25px 120px;
+    min-height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    @media only screen and (max-width: 991px) {
+        height: auto;
+    }
+
+    .wrapInfo {
+        display: flex;
+        flex-direction: column;
+        max-width: 1330px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        color: #FFFFFF;
+
+        @media only screen and (max-width: 1440px) {
+            max-width: 990px;
+        }
+
+        .poster {
+            @media only screen and (max-width: 991px) {
+                text-align: center;
+            }
+
+            img {
+                height: 430px;
+                width: 315px;
+                margin: 0 auto;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        }
+
+        .basic {
+            color: #FFFFFF;
+            margin-left: -7rem;
+
+            @media only screen and (max-width: 1440px) {
+                margin-left: 0;
+            }
+
+            .title {
+                font-family: 'Poppins', sans-serif;
+                color: #e4d804;
+                font-size: 40px;
+                font-style: normal;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .meta {
+                font-size: 15px;
+
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 15px;
+                        margin-right: 18px;
+
+                        span {
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+
+                    .type {
+                        border: 2px solid #fff;
+                        padding: 5px 10px;
+                        line-height: 1;
+                        font-weight: 700;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                    }
+
+                    .releaseTime {
+                        span {
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: #e3dfdf;
+
+                            & + span {
+                                margin-left: 15px;
+                            }
+
+                            svg {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .desc {
+                display: flex;
+                flex-direction: column;
+
+                .descGroup {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 10px;
+                    align-items: flex-start;
+
+                    .label {
+                        margin-right: 10px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+
+                        svg {
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .value {
+                        font-style: italic;
+                    }
+                }
+            }
+
+            .rating {
+                border: 1px solid #cbad20;
+                padding: 10px;
+                float: left;
+                border-radius: 10px;
+                background: #cbad20;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+
+        .plot {
+            margin-top: 1rem;
+            .title {
+                margin-bottom: 1rem;
+            }
+            .content {
+                font-size: 15px;
+                text-align: justify;
+                background-color: rgb(18, 21, 30);
+                box-shadow: 0 3px 0 rgba(143, 143, 143, 0.14);
+                padding: 15px;
+                min-height: 300px;
+            }
+        }
+    }
+}
