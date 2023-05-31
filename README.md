@@ -7,13 +7,15 @@ Link: https://scintillating-selkie-e7d362.netlify.app
 ## Getting Started
 This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running follow these simple example steps.
 
-###Prerequisites
+### Prerequisites
+
 - npm
 ```bash
 npm install npm@latest -g
 ```
 
-###Usage
+### Usage
+
 Run the development server:
 
 ```bash
