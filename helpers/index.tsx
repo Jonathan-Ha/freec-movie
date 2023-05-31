@@ -13,7 +13,6 @@ export function yieldPromiseDataModel(data: any, resolve: any, reject: any) {
     }
 }
 
-
 export function removeAccents(str: string) {
     if (str) {
         return str.normalize('NFD')
@@ -33,4 +32,8 @@ export function formatURL(str: string) {
         str = str.replace(/\s/g, '-');
     }
     return str;
+}
+
+export function isObjectEmpty(obj: object) {
+    return Object.entries(obj).length === 0;
 }

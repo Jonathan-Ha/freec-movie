@@ -6,16 +6,20 @@ import Head from 'next/head';
 import styles from "./styles.module.scss"
 
 export interface Props extends PropsWithChildren {
+    children: any
 }
 
 export const MainLayout = (props: Props) => {
     const {Content} = Layout;
-    const {children} = props
+    const {children} = props;
+
     return (<>
         <Head>
-            <title>{children.props.meta ? children.props.meta.title : "Movie"}</title>
-            <link rel="icon" href="/favicon.ico" />
-            <meta name="description" content={children.props.meta ? children.props.meta.description : "Movie"} />
+            <title>{children && children.props && children.props.meta
+                ? children.props.meta.title : "Movie"}</title>
+            <meta name="description" content={children && children.props && children.props.meta
+                ? children.props.meta.description : "Movie"}/>
+            <link rel="icon" href="/favicon.ico"/>
         </Head>
         <Layout className={styles['blockLayout']}>
             <Header/>

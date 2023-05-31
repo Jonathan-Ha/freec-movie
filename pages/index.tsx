@@ -11,8 +11,8 @@ export interface Props {
 
 export function Home(props: Props) {
     const [loading, setLoading] = useState<boolean>(false);
-    const [dataMovie, setDataMovie] = useState<object>(undefined);
-    const [initialDataMovie, setInitialDataMovie] = useState<object>(undefined);
+    const [dataMovie, setDataMovie] = useState<any>(undefined);
+    const [initialDataMovie, setInitialDataMovie] = useState<any>(undefined);
 
     const [modal, contextHolder] = Modal.useModal();
 
@@ -23,7 +23,7 @@ export function Home(props: Props) {
             y: values.itemYear ? values.itemYear.$y : undefined
         }
         setLoading(true);
-        MDLMenu.searchMovie(reqFt).then(ft => {
+        MDLMenu.searchMovie(reqFt).then((ft: any) => {
             setDataMovie(ft.data);
             setInitialDataMovie(ft.data);
             setLoading(false);
@@ -42,7 +42,7 @@ export function Home(props: Props) {
     const onChangeFilterType = (values: any) => {
         let temp = {...initialDataMovie}
         if (values.length) {
-            const foundObject = temp.Search.filter(obj => values.includes(obj.Type));
+            const foundObject = temp.Search.filter((obj: any) => values.includes(obj.Type));
             temp = {...temp, Search: foundObject}
         }
         setDataMovie(temp);

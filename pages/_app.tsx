@@ -22,7 +22,7 @@ function CustomApp({Component, ...rest}: AppPropsWithLayout) {
             <Component
                 {...pageProps}
             />, {})
-    }, [Component, pageProps]);
+    }, [Component, pageProps, renderLayout]);
     const queryClient = new QueryClient();
 
     return (<>

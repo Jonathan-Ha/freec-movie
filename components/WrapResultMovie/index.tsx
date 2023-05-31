@@ -1,4 +1,5 @@
 import React, {useMemo} from "react";
+import _ from "lodash";
 import {Empty, Select} from 'antd';
 import {dataType} from "@/constants/data";
 import Image from "next/image";
@@ -10,8 +11,8 @@ import styles from "./styles.module.scss"
 export interface Props {
     loading: boolean
     onChangeFilterType: (values: any) => void
-    dataMovie: {
-        Response: boolean
+    dataMovie?: {
+        Response?: boolean
         Search?: [{
             Title?: string
             Poster?: string
@@ -30,35 +31,31 @@ export const WrapResultMovie = (props: Props) => {
         if (loading) {
             return (<WrapSkeletonTypeA classDesc={styles["desc"]} classWrapItem={styles["wrapItem"]} quantity={15}/>);
         }
-        if (dataMovie) {
-            if (dataMovie.Search.length) {
-                return _.map(dataMovie.Search, (ft, indexFt) => {
-                    const link = `movie/${formatURL(ft.Title).toLowerCase()}-${ft.imdbID}`;
-                    return (<div key={indexFt} className={styles["wrapItem"]}>
-                        <Link href={link} target={"_blank"}>
-                            <Image
-                                src={ft.Poster}
-                                alt={ft.Title}
-                                width={100}
-                                height={100}
-                            />
-                            <div className={styles["desc"]}>
-                                <div className={styles["descGroup"]}>
-                                    <span className={styles["name"]}>{ft.Title}</span>
-                                    <span className={styles["year"]}>{ft.Year}</span>
-                                </div>
-                                <div className={styles["descGroup"]}>
-                                    <span className={styles["type"]}>{ft.Type}</span>
-                                </div>
+        if (dataMovie && dataMovie.Search && dataMovie.Search.length) {
+            return _.map(dataMovie.Search, (ft: any, indexFt: number) => {
+                const link = `movie/${formatURL(ft.Title).toLowerCase()}-${ft.imdbID}`;
+                return (<div key={indexFt} className={styles["wrapItem"]}>
+                    <Link href={link} target={"_blank"}>
+                        <Image
+                            src={ft.Poster}
+                            alt={ft.Title}
+                            width={100}
+                            height={100}
+                        />
+                        <div className={styles["desc"]}>
+                            <div className={styles["descGroup"]}>
+                                <span className={styles["name"]}>{ft.Title}</span>
+                                <span className={styles["year"]}>{ft.Year}</span>
                             </div>
-                        </Link>
-                    </div>)
-                });
-            } else {
-                return <Empty description={false}/>;
-            }
+                            <div className={styles["descGroup"]}>
+                                <span className={styles["type"]}>{ft.Type}</span>
+                            </div>
+                        </div>
+                    </Link>
+                </div>)
+            });
         } else {
-            return (<Empty description={false}/>);
+            return <Empty description={false}/>;
         }
     }, [dataMovie, loading]);
 

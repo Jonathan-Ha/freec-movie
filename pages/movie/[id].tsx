@@ -39,7 +39,7 @@ const MovieDetailPage = (props: Props) => {
                          sm={24}
                          xs={24} className={styles["poster"]}>
                         <Image
-                            src={movieDetail.Poster}
+                            src={movieDetail.Poster as string}
                             alt={"ft.Title"}
                             width={100}
                             height={100}
@@ -88,7 +88,7 @@ const MovieDetailPage = (props: Props) => {
                             </div>
                         </div>
                         <div className={styles["rating"]}>
-                            <p>{movieDetail.Ratings[0].Value}</p>
+                            <p>{movieDetail && movieDetail.Ratings ? movieDetail.Ratings[0].Value : "-"}</p>
                         </div>
                     </Col>
                 </Row>
@@ -115,7 +115,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         i: imdbID,
         plot: "full"
     }
-    const {data} = await MDLMenu.detailMovie(reqFt);
+    const {data} = await MDLMenu.detailMovie(reqFt) as { data: any };
     if (data.Error) {
         return {
             notFound: true
